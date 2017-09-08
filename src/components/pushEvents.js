@@ -54,7 +54,13 @@ const Events = ({ events, limit }) => {
   const limitLength = limit || 7
 
   return (
-    <Timeline>
+    <Timeline
+      pending={
+        <a href="https://github.com/thonatos" target="_blank">
+          See more
+        </a>
+      }
+    >
       {pushEvents.slice(0, limitLength).map((e, k) => {
         const color = COLORS[k % 4]
         return (
