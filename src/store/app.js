@@ -19,39 +19,6 @@ class State {
       name: 'Blog',
       href: '/blog',
     },
-    {
-      name: 'Stars',
-      href: '/page/stars',
-    },
-  ]
-
-  @observable
-  socials = [
-    {
-      name: 'github',
-      href: 'https://github.com/thonatos/',
-      icon: '#icon-github',
-    },
-    {
-      name: 'docker',
-      href: 'https://github.com/ImplementsIO',
-      icon: '#icon-docker',
-    },
-    {
-      name: 'weibo',
-      href: 'http://weibo.com/thonatos',
-      icon: '#icon-weibo',
-    },
-    // {
-    //   name: 'hexo',
-    //   href: 'http://blog.thonatos.com',
-    //   icon: '#icon-hexo',
-    // },
-    {
-      name: 'zhihu',
-      href: 'https://zhuanlan.zhihu.com/a-log-cabin',
-      icon: '#icon-zhihu',
-    },
   ]
 
   constructor(root) {

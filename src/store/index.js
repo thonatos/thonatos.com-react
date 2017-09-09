@@ -1,5 +1,5 @@
 import App from './app'
+import User from './user'
 import Blog from './blog'
-import Github from './github'
 
-export { App, Blog, Github }
+export { App, User, Blog }

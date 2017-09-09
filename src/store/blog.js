@@ -1,6 +1,8 @@
 import { observable, action } from 'mobx'
 import { Github } from '~/utils/'
+import { source } from '~/config/'
 
+const { owner, repo, post } = source
 const gh = new Github()
 
 class State {
@@ -17,7 +19,7 @@ class State {
   loadPosts = async () => {
     this.posts_loading = true
     try {
-      const { data } = await gh.getContents('thonatos', 'blog', 'posts')
+      const { data } = await gh.getContents(`${owner}`, `${repo}`, `${post}`)
       this.posts = data
     } catch (error) {
     } finally {
@@ -30,7 +32,11 @@ class State {
     this.post_loading = true
     this.post = null
     try {
-      const { data } = await gh.getContents('thonatos', 'blog', `posts/${name}`)
+      const { data } = await gh.getContents(
+        `${owner}`,
+        `${repo}`,
+        `${post}/${name}`
+      )
       this.post = data
     } catch (error) {
     } finally {
