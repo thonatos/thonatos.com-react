@@ -1,11 +1,9 @@
 import axios from 'axios'
+import { github } from '~/config/'
+
+const { auth: defaultAuth } = github
 
 axios.defaults.baseURL = 'https://api.github.com'
-
-const defaultAuth = {
-  username: 'thonatos',
-  password: ['7b1d96130bd7ad7b7c96a', '6a0d6d67fdcc11b60d6'].join(''),
-}
 
 class Github {
   constructor(auth = null, opts = {}) {
