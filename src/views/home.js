@@ -40,21 +40,13 @@ const Socials = ({ data }) => {
   )
 }
 
-const about = `
-## Thonatos.Yang
-
-- thonatos.yang@gmail.com
-- Frontend Developer / 前端汪, DevOps / 运维开发
-- →_→ 兼职写代码，专职：端茶倒水，如有怀疑，请戳下面链接
-- 09/2011 - 06/2015, Department of Remote sensing science and technology, NUIST, NanJing
-`
-@inject('app', 'github')
+@inject('app', 'user')
 @observer
 class About extends Component {
   render() {
-    const { app, github } = this.props
-    const { langs, socials } = app
-    const { events } = github
+    const { app, user } = this.props
+    const { langs } = app
+    const { about, events, socials } = user
     return (
       <Row gutter={16}>
         <Col sm={16} xs={24}>
