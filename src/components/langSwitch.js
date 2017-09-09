@@ -1,9 +1,19 @@
 import React, { Component } from 'react'
 import { Dropdown, Menu, Button } from 'antd'
 
-const Item = Menu.Item
+const LANGUAGES = {
+  zh_cn: {
+    text: 'CHINESE',
+    icon: '#icon-china',
+  },
+  en_us: {
+    text: 'ENGLISH',
+    icon: '#icon-english',
+  },
+}
 
-const ICon = ({ className, text }) => {
+const Item = Menu.Item
+const Lang = ({ className, text }) => {
   return (
     <div>
       <svg className="icon" aria-hidden="true">
@@ -16,18 +26,6 @@ const ICon = ({ className, text }) => {
   )
 }
 
-const LANGS = ['en_us', 'zh_cn']
-
-const LANGS_TEXT = {
-  zh_cn: 'CHINESE',
-  en_us: 'ENGLISH',
-}
-
-const LANGS_ICON = {
-  zh_cn: '#icon-china',
-  en_us: '#icon-english',
-}
-
 class Language extends Component {
   onSelect = ({ key }) => {
     this.props.changeLanguageTo(key)
@@ -37,20 +35,23 @@ class Language extends Component {
     const { locale } = this.props
     const menu = (
       <Menu onSelect={this.onSelect} style={{ textAlign: 'center' }}>
-        {LANGS.map(v => {
+        {Object.keys(LANGUAGES).map(l => {
+          const { icon, text } = LANGUAGES[l]
           return (
-            <Item key={v}>
-              <ICon className={LANGS_ICON[v]} text={LANGS_TEXT[v]} />
+            <Item key={l}>
+              <Lang className={icon} text={text} />
             </Item>
           )
         })}
       </Menu>
     )
 
+    const { icon, text } = LANGUAGES[locale]
+
     return (
       <Dropdown overlay={menu} trigger={['click']} placement="bottomCenter">
         <Button style={{ border: 'none' }}>
-          <ICon className={LANGS_ICON[locale]} text={LANGS_TEXT[locale]} />
+          <Lang className={icon} text={text} />
         </Button>
       </Dropdown>
     )
