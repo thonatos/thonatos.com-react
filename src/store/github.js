@@ -1,14 +1,10 @@
 import { observable, action } from 'mobx'
 import { Github } from '~/utils/'
 
-const auth = {
-  username: 'thonatos',
-  password: ['7b1d96130bd7ad7b7c96a', '6a0d6d67fdcc11b60d6'].join(''),
-}
-
-const gh = new Github(auth)
+const gh = new Github()
 
 class State {
+  @observable stars = []
   @observable events = []
 
   constructor(root) {
@@ -21,6 +17,14 @@ class State {
     try {
       const { data } = await gh.getUserEvents('thonatos')
       this.events = data
+    } catch (error) {}
+  }
+
+  @action
+  loadStars = async () => {
+    try {
+      const { data } = await gh.getUserStarred('thonatos')
+      this.stars = data
     } catch (error) {}
   }
 }

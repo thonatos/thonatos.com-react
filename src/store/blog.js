@@ -1,15 +1,9 @@
 import { observable, action } from 'mobx'
 import { Github } from '~/utils/'
 
-const auth = {
-  username: 'thonatos',
-  password: ['7b1d96130bd7ad7b7c96a', '6a0d6d67fdcc11b60d6'].join(''),
-}
-
-const gh = new Github(auth)
+const gh = new Github()
 
 class State {
-  @observable events = []
   @observable posts = []
   @observable posts_loading = false
   @observable post = null

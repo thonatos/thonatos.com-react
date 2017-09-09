@@ -19,6 +19,10 @@ class State {
       name: 'Blog',
       href: '/blog',
     },
+    {
+      name: 'Stars',
+      href: '/page/stars',
+    },
   ]
 
   @observable
