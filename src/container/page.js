@@ -3,16 +3,16 @@ import { Route, Switch } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import { Base as Layout } from '~/layouts/'
 
-import { blog } from '~/views/routes'
-const childRoutes = Object.values(blog)
+import { page } from '~/views/routes'
+const childRoutes = Object.values(page)
 
-class Blog extends Component {
+class Home extends Component {
   render() {
     const { location } = this.props
     return (
       <Layout location={location}>
         <Helmet>
-          <title>Blog - Thonatos.Yang</title>
+          <title>Page - Thonatos.Yang</title>
         </Helmet>
         <Switch>
           {childRoutes.map((route, index) => {
@@ -31,4 +31,4 @@ class Blog extends Component {
   }
 }
 
-export default Blog
+export default Home

@@ -1,5 +1,6 @@
 import Home from './home'
+import Page from './page'
 import Blog from './blog'
 import NoMatch from './noMatch'
 
-export { Home, Blog, NoMatch }
+export { Home, Page, Blog, NoMatch }

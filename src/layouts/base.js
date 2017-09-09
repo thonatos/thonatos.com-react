@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
+import Dimensions from 'react-dimensions'
+import { observer, inject } from 'mobx-react'
+import { Link } from 'react-router-dom'
 import { Layout } from 'antd'
 import { Menu, Breadcrumb, Dropdown, Row, Col, Icon } from 'antd'
-import { Link } from 'react-router-dom'
-import Dimensions from 'react-dimensions'
 
 import logo from '~/logo.svg'
 import styles from './base.module.css'
+import { LangSwitch } from '~/components'
 
 const { Header, Footer, Content } = Layout
 
@@ -51,13 +53,30 @@ const NavMenu = ({ menus, width }) => {
       </Dropdown>
 }
 
+@inject('app')
+@observer
 class Base extends Component {
   render() {
-    const containerWidth = this.props.containerWidth
-    const { children, menus, breadcrumbs, lang } = this.props
-    const _breadcrumbs = breadcrumbs
-      ? breadcrumbs.splice(0, 1, 'Home') && breadcrumbs
+    const { location, app } = this.props
+
+    // navMenus
+    const { menus: navMmenus, locale, changeLanguageTo } = app
+    const menus = navMmenus.length > 0 ? navMmenus.peek() : []
+
+    const lang = (
+      <LangSwitch locale={locale} changeLanguageTo={changeLanguageTo} />
+    )
+
+    // breadcrumbs
+    const { pathname } = location
+    const pathArray = pathname.split('/')
+    const breadcrumbs = pathArray
+      ? pathArray.splice(0, 1, 'Home') && pathArray
       : ['Home']
+
+    // other
+    const containerWidth = this.props.containerWidth
+    const { children } = this.props
 
     return (
       <Layout className={styles.layout}>
@@ -87,8 +106,8 @@ class Base extends Component {
           <Container>
             {breadcrumbs
               ? <Breadcrumb style={{ margin: '12px 0' }}>
-                  {_breadcrumbs.map((v, k) => {
-                    const link = [''].concat(_breadcrumbs.slice(1, k + 1))
+                  {breadcrumbs.map((v, k) => {
+                    const link = [''].concat(breadcrumbs.slice(1, k + 1))
                     const href = link.join('/') || '/'
                     return (
                       <Breadcrumb.Item key={k}>
