@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { observer, inject } from 'mobx-react'
 import { Row, Col } from 'antd'
 import { Markdown, PushEvents } from '~/components'
 import avatar from '~/mtt.png'
@@ -47,11 +48,13 @@ const about = `
 - →_→ 兼职写代码，专职：端茶倒水，如有怀疑，请戳下面链接
 - 09/2011 - 06/2015, Department of Remote sensing science and technology, NUIST, NanJing
 `
-
+@inject('app', 'github')
+@observer
 class About extends Component {
   render() {
-    const { langs } = this.props
-    const { socials, events } = this.props.data
+    const { app, github } = this.props
+    const { langs, socials } = app
+    const { events } = github
     return (
       <Row gutter={16}>
         <Col sm={16} xs={24}>
