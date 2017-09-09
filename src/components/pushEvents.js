@@ -56,7 +56,11 @@ const Events = ({ events, limit }) => {
   return (
     <Timeline
       pending={
-        <a href="https://github.com/thonatos" target="_blank">
+        <a
+          href="https://github.com/thonatos"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           See more
         </a>
       }
