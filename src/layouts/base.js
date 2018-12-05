@@ -11,7 +11,7 @@ import { LangSwitch } from '~/components'
 
 const { Header, Footer, Content } = Layout
 
-const Container = ({ children, className }) => {
+const Container = ({ children, className = '' }) => {
   return (
     <div className={`${styles.container} ${className}`}>
       {children}
@@ -57,7 +57,7 @@ const NavMenu = ({ menus, width }) => {
 @observer
 class Base extends Component {
   render() {
-    const { location, app } = this.props
+    const { location, app, hideBreadcrumbs } = this.props
 
     // navMenus
     const { menus: navMmenus, locale, changeLanguageTo } = app
@@ -104,8 +104,8 @@ class Base extends Component {
         {/* content */}
         <Content className={styles.content}>
           <Container>
-            {breadcrumbs
-              ? <Breadcrumb style={{ margin: '12px 0' }}>
+            {!hideBreadcrumbs && breadcrumbs
+              ? <Breadcrumb style={{ margin: '12px 0', padding: '0 1em' }}>
                   {breadcrumbs.map((v, k) => {
                     const link = [''].concat(breadcrumbs.slice(1, k + 1))
                     const href = link.join('/') || '/'
@@ -140,7 +140,8 @@ class Base extends Component {
             </div>
             <div style={{ marginTop: '0.6em' }}>
               <p className={styles.footer_desc}>
-                Copyright © 2017 . <br /> Maintained By{' '}
+                Copyright © 2012-{new Date().getFullYear()} . <br /> Maintained
+                By{' '}
                 <a
                   href="https://github.com/thonatos"
                   rel="noopener noreferrer"

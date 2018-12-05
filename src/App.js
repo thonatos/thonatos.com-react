@@ -22,9 +22,6 @@ class Wrap extends Component {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/blog" component={Blog} />
-              {/*
-                <Route path="/page" component={Page} />
-              */}
               <Route component={NoMatch} />
             </Switch>
           </div>

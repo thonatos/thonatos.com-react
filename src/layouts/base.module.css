@@ -14,8 +14,8 @@
 .header {
   background: #fff;
   height: 65px;
-  border-bottom: 1px solid #e9e9e9;
   padding: 0 1em;
+  /* border-bottom: 1px solid #e9e9e9; */
 }
 
 .header_menu {
@@ -31,6 +31,7 @@
 
 .content {
   padding: 1em 0 2em 0;
+  background: #fff;
 }
 
 .content_box {
@@ -41,6 +42,8 @@
 .footer {
   background: #fff;
   padding: 3em 1em;
+  border-top: 1px solid #e9e9e9;
+  transition: all 0.4s ease-in-out;
 }
 
 /* custom */
@@ -68,6 +71,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
